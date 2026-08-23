@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>君 の書き順</title>
+<style>
+body { font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif; background: #f6f2e9; margin: 0; padding: 16px; color: #333; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+p.note { font-size: 13px; color: #777; margin: 0 0 16px; }
+section.kanji { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+section.kanji h2, section.kanji h3 { margin: 0 0 8px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.big { font-size: 34px; }
+.big a { color: inherit; text-decoration: none; }
+.count { font-size: 14px; color: #888; font-weight: normal; }
+.grade { font-size: 12px; color: #fff; background: #7aa25c; border-radius: 8px; padding: 2px 8px; font-weight: normal; align-self: center; }
+.grade.out { background: #b08650; }
+.yomis { display: flex; gap: 10px; flex-wrap: wrap; font-weight: normal; font-size: 15px; }
+.yomi .tag { font-size: 11px; color: #fff; border-radius: 6px; padding: 1px 5px; margin-right: 4px; vertical-align: 1px; }
+.yomi.on .tag { background: #5c7aa2; }
+.yomi.kun .tag { background: #a25c7a; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.cell { text-align: center; }
+.cell .lbl { font-size: 11px; color: #999; margin-bottom: 2px; }
+@media (max-width: 520px) { .cell svg { width: 86px; height: 86px; } .big { font-size: 28px; } }
+
+.player { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.08); text-align: center; }
+.player svg { max-width: min(70vw, 340px); height: auto; touch-action: manipulation; }
+.player .ctrl { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+.player button { font-size: 16px; padding: 10px 16px; border-radius: 10px; border: 1px solid #d8cfae; background: #fffdf5; color: #333; cursor: pointer; }
+.player button:active { background: #f0e8d0; }
+#player-label { font-size: 14px; color: #777; margin-top: 6px; }
+.player .hint { font-size: 12px; color: #999; margin-top: 4px; }
+</style></head><body>
+<p style="margin:0 0 10px;"><a href="../index.html">← いちらんへ</a></p>
+<section class="kanji" style="margin-bottom:12px;">
+<h1 style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0;">
+<span class="big" style="font-size:44px;">君</span>
+<span class="count">(7画)</span><span class="grade">小3</span>
+<span class="yomis"><span class="yomi on"><span class="tag">音</span>クン</span><span class="yomi kun"><span class="tag">訓</span>きみ・ぎみ</span></span></h1>
+</section>
+<div class="player">
+<svg id="player-svg" viewBox="0 0 109 109" width="340" height="340" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/><line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/></svg>
+<div id="player-label"></div>
+<div class="ctrl">
+<button id="btn-prev">◀ まえへ</button>
+<button id="btn-next">つぎへ ▶</button>
+<button id="btn-auto">▶ じどう</button>
+<button id="btn-reset">はじめから</button>
+</div>
+<div class="hint">マスをタップしても つぎの画にすすむよ</div>
+</div>
+<h2 style="font-size:16px;">一画ずつ</h2>
+<section class="kanji">
+<div class="row"><div class="cell"><div class="lbl">かんせい</div><svg viewBox="0 0 109 109" width="110" height="110" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/>
+<line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><path d="M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.75,37.39c3.14,0.21,5.61,0.5,9.07,0.17c19.3-1.82,40.55-4.07,62.58-5.81c3.84-0.3,6.98,0.17,8.72,0.39" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.53,52.37c1.73,0.21,4.86,0.11,6.91-0.11c13.81-1.5,24.31-3,34.53-3.94c2.75-0.25,4.99-0.25,7.07-0.04" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.96,22.5c0.67,1.38,0.59,2.42,0.29,3.5C46.28,47.18,39,69.5,15.75,88.5" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M39.5,66.6c0.95,0.95,1.32,2.26,1.5,3.4c1.09,6.87,1.8,13.94,2.65,21.25c0.12,1.07,0.25,2.14,0.38,3.21" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M41.64,68.46C54,66.5,71.31,64.38,77.69,63.77c2.81-0.27,4.56,0.98,3.9,3.85C80.23,73.5,79,78.5,76.92,88.52" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M44.04,92.38c6.29-0.63,20.95-2.05,30.6-2.64c1.84-0.11,3.49-0.19,4.87-0.23" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cell"><div class="lbl">1かくめ</div><svg viewBox="0 0 109 109" width="110" height="110" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/>
+<line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><path d="M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64" fill="none" stroke="#e03131" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25.2" cy="18.5" r="7.5" fill="#e03131"/><text x="25.2" y="18.5" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">1</text></svg></div><div class="cell"><div class="lbl">2かくめ</div><svg viewBox="0 0 109 109" width="110" height="110" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/>
+<line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><path d="M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.75,37.39c3.14,0.21,5.61,0.5,9.07,0.17c19.3-1.82,40.55-4.07,62.58-5.81c3.84-0.3,6.98,0.17,8.72,0.39" fill="none" stroke="#e03131" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="35.5" r="7.5" fill="#e03131"/><text x="8.5" y="35.5" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">2</text></svg></div><div class="cell"><div class="lbl">3かくめ</div><svg viewBox="0 0 109 109" width="110" height="110" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/>
+<line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><path d="M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.75,37.39c3.14,0.21,5.61,0.5,9.07,0.17c19.3-1.82,40.55-4.07,62.58-5.81c3.84-0.3,6.98,0.17,8.72,0.39" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.53,52.37c1.73,0.21,4.86,0.11,6.91-0.11c13.81-1.5,24.31-3,34.53-3.94c2.75-0.25,4.99-0.25,7.07-0.04" fill="none" stroke="#e03131" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20.8" cy="50.2" r="7.5" fill="#e03131"/><text x="20.8" y="50.2" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">3</text></svg></div><div class="cell"><div class="lbl">4かくめ</div><svg viewBox="0 0 109 109" width="110" height="110" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/>
+<line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><path d="M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.75,37.39c3.14,0.21,5.61,0.5,9.07,0.17c19.3-1.82,40.55-4.07,62.58-5.81c3.84-0.3,6.98,0.17,8.72,0.39" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.53,52.37c1.73,0.21,4.86,0.11,6.91-0.11c13.81-1.5,24.31-3,34.53-3.94c2.75-0.25,4.99-0.25,7.07-0.04" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.96,22.5c0.67,1.38,0.59,2.42,0.29,3.5C46.28,47.18,39,69.5,15.75,88.5" fill="none" stroke="#e03131" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46.5" cy="26.5" r="7.5" fill="#e03131"/><text x="46.5" y="26.5" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">4</text></svg></div><div class="cell"><div class="lbl">5かくめ</div><svg viewBox="0 0 109 109" width="110" height="110" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/>
+<line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><path d="M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.75,37.39c3.14,0.21,5.61,0.5,9.07,0.17c19.3-1.82,40.55-4.07,62.58-5.81c3.84-0.3,6.98,0.17,8.72,0.39" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.53,52.37c1.73,0.21,4.86,0.11,6.91-0.11c13.81-1.5,24.31-3,34.53-3.94c2.75-0.25,4.99-0.25,7.07-0.04" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.96,22.5c0.67,1.38,0.59,2.42,0.29,3.5C46.28,47.18,39,69.5,15.75,88.5" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M39.5,66.6c0.95,0.95,1.32,2.26,1.5,3.4c1.09,6.87,1.8,13.94,2.65,21.25c0.12,1.07,0.25,2.14,0.38,3.21" fill="none" stroke="#e03131" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36.5" cy="77.5" r="7.5" fill="#e03131"/><text x="36.5" y="77.5" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">5</text></svg></div><div class="cell"><div class="lbl">6かくめ</div><svg viewBox="0 0 109 109" width="110" height="110" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/>
+<line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><path d="M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.75,37.39c3.14,0.21,5.61,0.5,9.07,0.17c19.3-1.82,40.55-4.07,62.58-5.81c3.84-0.3,6.98,0.17,8.72,0.39" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.53,52.37c1.73,0.21,4.86,0.11,6.91-0.11c13.81-1.5,24.31-3,34.53-3.94c2.75-0.25,4.99-0.25,7.07-0.04" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.96,22.5c0.67,1.38,0.59,2.42,0.29,3.5C46.28,47.18,39,69.5,15.75,88.5" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M39.5,66.6c0.95,0.95,1.32,2.26,1.5,3.4c1.09,6.87,1.8,13.94,2.65,21.25c0.12,1.07,0.25,2.14,0.38,3.21" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M41.64,68.46C54,66.5,71.31,64.38,77.69,63.77c2.81-0.27,4.56,0.98,3.9,3.85C80.23,73.5,79,78.5,76.92,88.52" fill="none" stroke="#e03131" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46.5" cy="61.6" r="7.5" fill="#e03131"/><text x="46.5" y="61.6" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">6</text></svg></div><div class="cell"><div class="lbl">7かくめ</div><svg viewBox="0 0 109 109" width="110" height="110" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="107" height="107" rx="6" fill="#fffdf5" stroke="#e0d8c0" stroke-width="1.5"/>
+<line x1="54.5" y1="4" x2="54.5" y2="105" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="4" y1="54.5" x2="105" y2="54.5" stroke="#d8cfae" stroke-width="1" stroke-dasharray="4 4"/><path d="M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.75,37.39c3.14,0.21,5.61,0.5,9.07,0.17c19.3-1.82,40.55-4.07,62.58-5.81c3.84-0.3,6.98,0.17,8.72,0.39" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.53,52.37c1.73,0.21,4.86,0.11,6.91-0.11c13.81-1.5,24.31-3,34.53-3.94c2.75-0.25,4.99-0.25,7.07-0.04" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M51.96,22.5c0.67,1.38,0.59,2.42,0.29,3.5C46.28,47.18,39,69.5,15.75,88.5" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M39.5,66.6c0.95,0.95,1.32,2.26,1.5,3.4c1.09,6.87,1.8,13.94,2.65,21.25c0.12,1.07,0.25,2.14,0.38,3.21" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M41.64,68.46C54,66.5,71.31,64.38,77.69,63.77c2.81-0.27,4.56,0.98,3.9,3.85C80.23,73.5,79,78.5,76.92,88.52" fill="none" stroke="#b9b3a6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M44.04,92.38c6.29-0.63,20.95-2.05,30.6-2.64c1.84-0.11,3.49-0.19,4.87-0.23" fill="none" stroke="#e03131" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="49.5" cy="86.0" r="7.5" fill="#e03131"/><text x="49.5" y="86.0" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">7</text></svg></div></div>
+</section>
+<script>window.CARD_DATA = {"strokes": ["M29.49,20.59c1.88,0.54,4.04,1.06,6.39,0.85C48,20.38,65,18.25,73.33,17.75c3.32-0.2,5.46,1.31,4.61,4.94c-1.44,6.19-3.44,14.19-5.09,24.64", "M14.75,37.39c3.14,0.21,5.61,0.5,9.07,0.17c19.3-1.82,40.55-4.07,62.58-5.81c3.84-0.3,6.98,0.17,8.72,0.39", "M26.53,52.37c1.73,0.21,4.86,0.11,6.91-0.11c13.81-1.5,24.31-3,34.53-3.94c2.75-0.25,4.99-0.25,7.07-0.04", "M51.96,22.5c0.67,1.38,0.59,2.42,0.29,3.5C46.28,47.18,39,69.5,15.75,88.5", "M39.5,66.6c0.95,0.95,1.32,2.26,1.5,3.4c1.09,6.87,1.8,13.94,2.65,21.25c0.12,1.07,0.25,2.14,0.38,3.21", "M41.64,68.46C54,66.5,71.31,64.38,77.69,63.77c2.81-0.27,4.56,0.98,3.9,3.85C80.23,73.5,79,78.5,76.92,88.52", "M44.04,92.38c6.29-0.63,20.95-2.05,30.6-2.64c1.84-0.11,3.49-0.19,4.87-0.23"], "numpos": {"1": [23.25, 21.5], "2": [6.5, 38.5], "3": [18.75, 53.24], "4": [44.5, 29.5], "5": [34.5, 80.5], "6": [44.5, 64.63], "7": [47.5, 88.97]}};</script>
+<script>
+(function(){
+  var S = window.CARD_DATA.strokes, N = window.CARD_DATA.numpos;
+  var svg = document.getElementById('player-svg');
+  var NS = 'http://www.w3.org/2000/svg';
+  var paths = [], overlay = null;
+  S.forEach(function(d){
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', d);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke-linecap', 'round');
+    p.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(p);
+    paths.push(p);
+  });
+  var step = 0; // 0=完成形, 1..n=その画まで
+  var n = S.length, timer = null;
+  var label = document.getElementById('player-label');
+  function clearOverlay(){ if (overlay) { overlay.remove(); overlay = null; } }
+  function mark(i){
+    clearOverlay();
+    var pos = N[String(i)];
+    if (!pos) return;
+    overlay = document.createElementNS(NS, 'g');
+    var c = document.createElementNS(NS, 'circle');
+    c.setAttribute('cx', pos[0]+2); c.setAttribute('cy', pos[1]-3);
+    c.setAttribute('r', 7.5); c.setAttribute('fill', '#e03131');
+    var t = document.createElementNS(NS, 'text');
+    t.setAttribute('x', pos[0]+2); t.setAttribute('y', pos[1]-3);
+    t.setAttribute('font-size', 10); t.setAttribute('font-weight', 'bold');
+    t.setAttribute('fill', '#fff'); t.setAttribute('text-anchor', 'middle');
+    t.setAttribute('dominant-baseline', 'central'); t.setAttribute('font-family', 'sans-serif');
+    t.textContent = i;
+    overlay.appendChild(c); overlay.appendChild(t);
+    svg.appendChild(overlay);
+  }
+  function render(animate){
+    paths.forEach(function(p, idx){
+      var i = idx + 1;
+      p.style.transition = '';
+      p.style.strokeDasharray = '';
+      p.style.strokeDashoffset = '';
+      if (step === 0) {
+        p.setAttribute('stroke', '#222'); p.setAttribute('stroke-width', 4);
+        p.style.visibility = 'visible';
+      } else if (i < step) {
+        p.setAttribute('stroke', '#b9b3a6'); p.setAttribute('stroke-width', 4);
+        p.style.visibility = 'visible';
+      } else if (i === step) {
+        p.setAttribute('stroke', '#e03131'); p.setAttribute('stroke-width', 5);
+        p.style.visibility = 'visible';
+        if (animate) {
+          var L = p.getTotalLength();
+          p.style.strokeDasharray = L;
+          p.style.strokeDashoffset = L;
+          p.getBoundingClientRect();
+          p.style.transition = 'stroke-dashoffset .6s ease';
+          p.style.strokeDashoffset = '0';
+        }
+      } else {
+        p.style.visibility = 'hidden';
+      }
+    });
+    if (step === 0) { clearOverlay(); label.textContent = 'かんせい(' + n + 'かく)'; }
+    else { mark(step); label.textContent = step + 'かくめ / ' + n + 'かく'; }
+  }
+  function stopAuto(){ if (timer) { clearInterval(timer); timer = null;
+    document.getElementById('btn-auto').textContent = '▶ じどう'; } }
+  document.getElementById('btn-next').addEventListener('click', function(){
+    stopAuto(); step = (step >= n) ? 0 : step + 1; render(true);
+  });
+  document.getElementById('btn-prev').addEventListener('click', function(){
+    stopAuto(); step = (step <= 0) ? n : step - 1; render(false);
+  });
+  document.getElementById('btn-reset').addEventListener('click', function(){
+    stopAuto(); step = 0; render(false);
+  });
+  document.getElementById('btn-auto').addEventListener('click', function(){
+    if (timer) { stopAuto(); return; }
+    this.textContent = '⏸ とめる';
+    step = 1; render(true);
+    timer = setInterval(function(){
+      if (step >= n) { stopAuto(); return; }
+      step += 1; render(true);
+    }, 900);
+  });
+  svg.addEventListener('click', function(){
+    stopAuto(); step = (step >= n) ? 0 : step + 1; render(true);
+  });
+  render(false);
+})();
+</script>
+<footer style="font-size:11px;color:#999;margin-top:24px;">筆順データ: <a href="https://github.com/KanjiVG/kanjivg">KanjiVG</a> (CC BY-SA 3.0) / 読み・画数: <a href="https://www.edrdg.org/wiki/index.php/KANJIDIC_Project">KANJIDIC2</a> (EDRDG, CC BY-SA 4.0)</footer>
+</body></html>
