@@ -83,7 +83,9 @@ def parse_kanjidic(path):
             if t == "ja_on":
                 on.append(r.text)
             elif t == "ja_kun":
-                kun.append(r.text)
+                # 単位の当て字など、カタカナ表記の訓(例: 志=シリング)は除外
+                if not any("ァ" <= c <= "ヶ" for c in r.text):
+                    kun.append(r.text)
         meta[lit] = {"grade": int(grade), "strokes": strokes, "on": on, "kun": kun}
     return meta
 

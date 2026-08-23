@@ -18,10 +18,11 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from kanjicards import DATA_DIR, DOCS_DIR
 from kanjicards.kanjivg import code_of, load_strokes
-from kanjicards.meta import display_readings, kata_to_hira, load_grades, load_meta
+from kanjicards.meta import (display_readings, kata_to_hira, load_grades,
+                             load_meta, reading_sort_key)
 from kanjicards.render import SCREEN_CSS, card_section, frames_row, readings_html
 
-CARD_GRADES = ["1", "2", "3"]  # カードページを作る学年(将来 "4","5","6" を足すだけで拡張可)
+CARD_GRADES = ["1", "2", "3", "4", "5", "6"]  # カードページを作る学年(小学校全配当)
 
 ATTRIBUTION = (
     '筆順データ: <a href="https://github.com/KanjiVG/kanjivg">KanjiVG</a> (CC BY-SA 3.0) / '
@@ -181,58 +182,82 @@ def build_card_page(ch, grade):
 
 
 def build_index(grades, meta):
-    tiles = []
-    sections = []
+    """索引: 大きな検索窓+全学年フラットな読み順グリッド(学年チップは絞り込みのみ)"""
+    all_chars = []
     for g in CARD_GRADES:
-        cells = []
-        for ch in grades[g]:
-            on, kun = display_readings(ch, max_on=2, max_kun=2)
-            yomi_disp = "・".join((on + kun)[:2])
-            # 検索用: 全読みをひらがなで(音はカタカナのまま+ひらがな化の両方)
-            m = meta[ch]
-            keys = set()
-            for r in m["on"]:
-                r = r.strip("-")
-                keys.add(r)
-                keys.add(kata_to_hira(r))
-            for r in m["kun"]:
-                r = r.strip("-")
-                keys.add(r.replace(".", ""))
-                keys.add(r.split(".")[0])
-            keys.add(ch)
-            cells.append(
-                f'<a class="tile" href="cards/{code_of(ch)}.html" data-k="{html.escape(" ".join(sorted(keys)))}">'
-                f'<span class="tch">{html.escape(ch)}</span><span class="tyo">{html.escape(yomi_disp)}</span></a>')
-        sections.append(
-            f'<h2 id="g{g}">小学{g}年({len(grades[g])}字)</h2><div class="grid">{"".join(cells)}</div>')
-    nav = "".join(f'<a href="#g{g}">小{g}</a>' for g in CARD_GRADES)
-    body = f'''<h1>漢字書き順カード</h1>
-<p class="note">字をタップするとカードが開きます。ならびは読み(音読み)の五十音順。</p>
-<div class="topnav">{nav}<a href="assignments/index.html">今回の課題</a></div>
-<input id="q" type="search" placeholder="よみがな・漢字で さがす(例: みぎ、運)" autocomplete="off">
-{"".join(sections)}
+        all_chars.extend((ch, g) for ch in grades[g])
+    all_chars.sort(key=lambda t: reading_sort_key(t[0], meta))
+    cells = []
+    for ch, g in all_chars:
+        on, kun = display_readings(ch, max_on=2, max_kun=2)
+        yomi_disp = "・".join((on + kun)[:2])
+        # 検索用: 全読みをひらがなで(音はカタカナのまま+ひらがな化の両方)
+        m = meta[ch]
+        keys = set()
+        for r in m["on"]:
+            r = r.strip("-")
+            keys.add(r)
+            keys.add(kata_to_hira(r))
+        for r in m["kun"]:
+            r = r.strip("-")
+            keys.add(r.replace(".", ""))
+            keys.add(r.split(".")[0])
+        keys.add(ch)
+        cells.append(
+            f'<a class="tile" href="cards/{code_of(ch)}.html" data-g="{g}" data-k="{html.escape(" ".join(sorted(keys)))}">'
+            f'<span class="tg">小{g}</span>'
+            f'<span class="tch">{html.escape(ch)}</span><span class="tyo">{html.escape(yomi_disp)}</span></a>')
+    chips = '<button class="chip on" data-g="">すべて</button>' + "".join(
+        f'<button class="chip" data-g="{g}">小{g}</button>' for g in CARD_GRADES)
+    body = f'''<div class="head">
+<h1>漢字書き順カード <a class="alink" href="assignments/index.html">今回の課題 →</a></h1>
+<input id="q" type="search" placeholder="よみがな か 漢字で さがす(例: うん、運)" autocomplete="off" autofocus>
+<div class="chips">{chips}</div>
+</div>
+<div class="grid">{"".join(cells)}</div>
+<p class="note" id="nohit" style="display:none;">みつかりませんでした</p>
 <script>
 var q = document.getElementById('q');
 var tiles = Array.prototype.slice.call(document.querySelectorAll('.tile'));
+var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+var gsel = '';
 function h2h(s){{ return s.replace(/[\\u30a1-\\u30f6]/g, function(c){{ return String.fromCharCode(c.charCodeAt(0)-0x60); }}); }}
-q.addEventListener('input', function(){{
+function apply(){{
   var v = h2h(q.value.trim());
+  var hit = 0;
   tiles.forEach(function(t){{
-    t.style.display = (!v || h2h(t.dataset.k).indexOf(v) !== -1) ? '' : 'none';
+    var ok = (!v || h2h(t.dataset.k).indexOf(v) !== -1) && (!gsel || t.dataset.g === gsel);
+    t.style.display = ok ? '' : 'none';
+    if (ok) hit++;
   }});
-}});
+  document.getElementById('nohit').style.display = hit ? 'none' : '';
+}}
+q.addEventListener('input', apply);
 q.addEventListener('keydown', function(e){{
   if (e.key !== 'Enter') return;
   var first = tiles.filter(function(t){{ return t.style.display !== 'none'; }})[0];
   if (first && q.value.trim()) location.href = first.getAttribute('href');
 }});
+chips.forEach(function(c){{
+  c.addEventListener('click', function(){{
+    gsel = c.dataset.g;
+    chips.forEach(function(x){{ x.className = 'chip' + (x === c ? ' on' : ''); }});
+    apply();
+  }});
+}});
 </script>'''
     css = '''
-.topnav { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
-.topnav a { background: #fff; border-radius: 8px; padding: 6px 14px; text-decoration: none; color: #333; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
-#q { width: 100%; max-width: 420px; font-size: 16px; padding: 10px 12px; border-radius: 10px; border: 1px solid #d8cfae; margin-bottom: 8px; box-sizing: border-box; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 8px; }
-.tile { background: #fff; border-radius: 10px; padding: 8px 4px; text-align: center; text-decoration: none; color: #333; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.head { position: sticky; top: 0; background: #f6f2e9; padding: 4px 0 10px; z-index: 5; }
+h1 { font-size: 18px; margin: 0 0 8px; display: flex; align-items: baseline; justify-content: space-between; }
+.alink { font-size: 13px; color: #5c7aa2; text-decoration: none; font-weight: normal; }
+#q { display: block; width: 100%; font-size: 22px; padding: 14px 16px; border-radius: 14px; border: 2px solid #d8cfae; box-sizing: border-box; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+#q:focus { outline: none; border-color: #a25c7a; }
+.chips { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.chip { font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid #d8cfae; background: #fff; color: #555; cursor: pointer; }
+.chip.on { background: #7aa25c; border-color: #7aa25c; color: #fff; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; margin-top: 10px; }
+.tile { position: relative; background: #fff; border-radius: 10px; padding: 8px 4px; text-align: center; text-decoration: none; color: #333; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.tile .tg { position: absolute; top: 3px; right: 5px; font-size: 9px; color: #b0a890; }
 .tile .tch { display: block; font-size: 30px; }
 .tile .tyo { display: block; font-size: 10px; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 '''

@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """受け入れ基準の機械チェック
 
-- 学年配当の字数(1年80 / 2年160 / 3年200)
-- 全440字: KanjiVG SVGが存在し、コマ数=画数、番号が1..nの連番
+- 学年配当の字数(1年80 / 2年160 / 3年200 / 4年202 / 5年193 / 6年191)
+- 全1026字: KanjiVG SVGが存在し、コマ数=画数、番号が1..nの連番
 - メタデータの画数とKanjiVGの画数が一致
 - 読み仮名: 音=カタカナ / 訓=ひらがな に正しく分かれている
 - docs/cards/ に全カードページが存在し、コマ数(完成+n)が一致
@@ -18,6 +18,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from kanjicards import DOCS_DIR
 from kanjicards.kanjivg import code_of, load_strokes, svg_path_for
 from kanjicards.meta import load_grades, load_meta
+from tools.build_site import CARD_GRADES
+
+EXPECTED = {"1": 80, "2": 160, "3": 200, "4": 202, "5": 193, "6": 191}
 
 KATAKANA = re.compile(r"^[ァ-ヶー]+$")
 HIRAGANA = re.compile(r"^[ぁ-んー]+([.-][ぁ-んー]+)*$")
@@ -33,12 +36,12 @@ def main():
     grades = load_grades()
     meta = load_meta()
 
-    for g, want in (("1", 80), ("2", 160), ("3", 200)):
-        if len(grades[g]) != want:
-            err(f"学年{g}: 字数 {len(grades[g])} != {want}")
+    for g in CARD_GRADES:
+        if len(grades[g]) != EXPECTED[g]:
+            err(f"学年{g}: 字数 {len(grades[g])} != {EXPECTED[g]}")
 
     total = 0
-    for g in ("1", "2", "3"):
+    for g in CARD_GRADES:
         for ch in grades[g]:
             total += 1
             if svg_path_for(ch) is None:

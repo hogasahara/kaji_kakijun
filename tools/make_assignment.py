@@ -130,9 +130,9 @@ def main():
     name = date + (f"-{args.slug}" if args.slug else "")
 
     meta = load_meta()
-    out_of_range = [ch for ch in chars if not (meta.get(ch) and meta[ch]["grade"] <= 3)]
+    out_of_range = [ch for ch in chars if not (meta.get(ch) and meta[ch]["grade"] <= 6)]
     if out_of_range:
-        print(f"注意: 小1〜3配当外の漢字が含まれます: {''.join(out_of_range)}"
+        print(f"注意: 小学校配当外の漢字が含まれます: {''.join(out_of_range)}"
               f"(KanjiVGから取得してカードを作ります)")
     missing = [ch for ch in chars if svg_path_for(ch) is None]
     if missing:
