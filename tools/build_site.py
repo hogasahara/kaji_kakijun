@@ -209,7 +209,7 @@ def build_index(grades, meta):
     body = f'''<h1>漢字書き順カード</h1>
 <p class="note">字をタップするとカードが開きます。ならびは読み(音読み)の五十音順。</p>
 <div class="topnav">{nav}<a href="assignments/index.html">今回の課題</a></div>
-<input id="q" type="search" placeholder="よみがなで さがす(例: みぎ、ウ)" autocomplete="off">
+<input id="q" type="search" placeholder="よみがな・漢字で さがす(例: みぎ、運)" autocomplete="off">
 {"".join(sections)}
 <script>
 var q = document.getElementById('q');
@@ -220,6 +220,11 @@ q.addEventListener('input', function(){{
   tiles.forEach(function(t){{
     t.style.display = (!v || h2h(t.dataset.k).indexOf(v) !== -1) ? '' : 'none';
   }});
+}});
+q.addEventListener('keydown', function(e){{
+  if (e.key !== 'Enter') return;
+  var first = tiles.filter(function(t){{ return t.style.display !== 'none'; }})[0];
+  if (first && q.value.trim()) location.href = first.getAttribute('href');
 }});
 </script>'''
     css = '''
