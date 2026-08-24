@@ -47,13 +47,14 @@ h1 { font-size: 18px; margin: 0 0 8px; display: flex; align-items: baseline; jus
 var q = document.getElementById('q');
 var tiles = Array.prototype.slice.call(document.querySelectorAll('.tile'));
 var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
-var gsel = '';
+var gsel = {};  // 選択中の学年(複数可)。空なら全学年
+function selEmpty(){ return Object.keys(gsel).length === 0; }
 function h2h(s){ return s.replace(/[\u30a1-\u30f6]/g, function(c){ return String.fromCharCode(c.charCodeAt(0)-0x60); }); }
 function apply(){
   var v = h2h(q.value.trim());
   var hit = 0;
   tiles.forEach(function(t){
-    var ok = (!v || h2h(t.dataset.k).indexOf(v) !== -1) && (!gsel || t.dataset.g === gsel);
+    var ok = (!v || h2h(t.dataset.k).indexOf(v) !== -1) && (selEmpty() || gsel[t.dataset.g]);
     t.style.display = ok ? '' : 'none';
     if (ok) hit++;
   });
@@ -67,8 +68,14 @@ q.addEventListener('keydown', function(e){
 });
 chips.forEach(function(c){
   c.addEventListener('click', function(){
-    gsel = c.dataset.g;
-    chips.forEach(function(x){ x.className = 'chip' + (x === c ? ' on' : ''); });
+    var g = c.dataset.g;
+    if (!g) { gsel = {}; }                 // 「すべて」で選択解除
+    else if (gsel[g]) { delete gsel[g]; }    // タップで個別にON/OFF(複数選択可)
+    else { gsel[g] = true; }
+    chips.forEach(function(x){
+      var xg = x.dataset.g;
+      x.className = 'chip' + ((xg ? gsel[xg] : selEmpty()) ? ' on' : '');
+    });
     apply();
   });
 });
